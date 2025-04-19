@@ -1,5 +1,3 @@
-import { lightBlue } from "@mui/material/colors";
-
 export default function Header() {
     return (
         <header>
