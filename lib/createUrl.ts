@@ -45,9 +45,11 @@ export default async function insertUrl(entry: EntryProps): Promise<string> {
 
     try {
         await checkUrl(url);
-    } catch (err: any) {
-        return err.message || "Bad URL";
+    } catch (err: unknown) {
+        const message = (err as { message?: string }).message;
+        return typeof message === "string" ? message : "Bad URL";
     }
+    
 
     if (await getUrl(alias)) return "Alias exists";
 
